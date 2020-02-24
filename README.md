@@ -2,9 +2,16 @@
 
 Pi Sniffer is a Wi-Fi sniffer built on the Raspberry Pi Zero W. While there are many excellent sniffing platforms out there, Pi Sniffer is unique for it's small size, real time display of captured data, and handling of user input.
 
-
 <image src="https://user-images.githubusercontent.com/787916/75169212-291e0c00-56f6-11ea-8ae9-13e4a2762276.jpg" height="66%" width="66%">
-  
+
+## Current Release
+
+You can generate your own release by using the image_gen/create_image.sh script. Otherwise, you can download an image from here:
+
+* https://drive.google.com/open?id=1fDnHzKo58GmVsX4SZX1u5hzFRoBoZbhI
+
+Just unzip the pack image and flash it to an SD card. Ideally, we'd be using GitHub's package feature, but I'm unfortunately limited from doing so at the moment.
+
 ## Project Goals
 The goal of this project was to create a Wi-Fi sniffer that I could carry around in my pocket, easily view real time status, decrypt packets on the fly, and change antenna channels as needed. Also, I wanted this project to be cheap (less than $100) and require no soldering.
   
