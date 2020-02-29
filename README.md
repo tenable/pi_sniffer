@@ -25,7 +25,7 @@ The base install requires:
 * Any SD card 8GB or larger
 
 Additionally, you can configure the device with any of the following add-ons (and still reasonably be called pocket sized):
-* [Secondary antenna by CanKit](https://www.amazon.com/CanaKit-Raspberry-Wireless-Adapter-Dongle/dp/B00GFAN498)
+* [Secondary antenna by CanaKit](https://www.amazon.com/CanaKit-Raspberry-Wireless-Adapter-Dongle/dp/B00GFAN498)
 * [Ublox-7 GPS](https://www.amazon.com/WINGONEER%C2%AE%C2%AE-Antenna-VK-172-Receiver-Windows/dp/B07F6TJG9L)
 * [MicroUSB to USB adapters](https://www.amazon.com/Ksmile%C2%AE-Female-Adapter-SamSung-tablets/dp/B01C6032G0)
 * [USB MiniHub](https://www.adafruit.com/product/2991)
