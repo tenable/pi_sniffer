@@ -85,6 +85,8 @@ namespace
         IEEE80211 link_layer;
         PCAP file_input(p_file);
         file_input.initialize();
+        
+        std::cout << "Reading: " << p_file << std::endl;
         while (file_input.get_packet(p_packet))
         {
             link_layer.handle_packet(p_packet);
@@ -283,6 +285,10 @@ int main(int p_argCount, char* p_argArray[])
                 {
                     packet.write_probe_csv_output(packet.m_startTime);
                 }
+                if (packet.get_const_config().get_ap_clients_csv())
+                {
+                    packet.write_ap_clients_csv_output(packet.m_startTime);
+                }
             }
         }
 
@@ -306,6 +312,10 @@ int main(int p_argCount, char* p_argArray[])
         if (packet.get_const_config().get_probe_csv())
         {
             packet.write_probe_csv_output(packet.m_startTime);
+        }
+        if (packet.get_const_config().get_ap_clients_csv())
+        {
+            packet.write_ap_clients_csv_output(packet.m_startTime);
         }
     }
     catch (const std::runtime_error& e)

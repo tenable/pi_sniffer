@@ -233,9 +233,6 @@ void Packet::write_wigle_output(const std::string& p_time)
     char buffer[32] = {0};
     std::string time;
 
-    std::string most;
-    std::size_t count = 0;
-
     // loop over the router
     boost::upgrade_lock<boost::shared_mutex> readLock(m_router_mutex);
     for (boost::ptr_unordered_map<boost::uint64_t, AP>::iterator it = m_devices.begin();
@@ -249,12 +246,6 @@ void Packet::write_wigle_output(const std::string& p_time)
         else
         {
             os << it->second->get_ssid() << ",";
-        }
-
-        if (it->second->get_client_count() > count && !it->second->get_ssid().empty() && it->second->get_ssid() != "<Unknown>")
-        {
-            count = it->second->get_client_count();
-            most.assign(it->second->get_ssid());
         }
 
         if (it->second->get_encryption().find("/") != std::string::npos)
@@ -287,7 +278,6 @@ void Packet::write_wigle_output(const std::string& p_time)
         os << "WIFI" << "\n";
     }
 
-    std::cout << most << ":" << count << std::endl;
     // close it
     wigle_output.close();
 }
@@ -359,6 +349,50 @@ void Packet::write_probe_csv_output(const std::string& p_time)
         os << it->first << "," << it->second->get_clients_count() << std::endl;
     }
     client_output.close();
+}
+
+void Packet::write_ap_clients_csv_output(const std::string& p_time)
+{
+    std::string filename(m_configuration.get_output_path() + "pi_sniffer_ap_clients_" + p_time + ".csv");
+
+    // create the file
+    std::filebuf ap_clients_output;
+    ap_clients_output.open(filename, std::ios::out);
+    if (!ap_clients_output.is_open())
+    {
+        std::cerr << "Failed to write " << filename << std::endl;
+        return;
+    }
+    std::ostream os(&ap_clients_output);
+
+    // data fields
+    os << "Clients,SSID,MAC,\n";
+
+    // loop over the router
+    boost::upgrade_lock<boost::shared_mutex> readLock(m_router_mutex);
+    for (boost::ptr_unordered_map<boost::uint64_t, AP>::iterator it = m_devices.begin();
+         it != m_devices.end(); ++it)
+    {
+        if (it->second->get_mac() == "00:00:00:00:00:00")
+        {
+            continue;
+        }
+
+        os << it->second->get_client_count() << ",";
+        if (it->second->get_ssid() == "<Unknown>")
+        {
+            os << ",";
+        }
+        else
+        {
+            os << it->second->get_ssid() << ",";
+        }
+
+        os << it->second->get_mac() << std::endl;
+    }
+
+    // close it
+    ap_clients_output.close();
 }
 
 void Packet::add_probe_network(const std::string& p_network, const std::string& p_client)

@@ -20,7 +20,7 @@ public:
 
 private:
 
-    AP* get_ap(Packet& p_packet, std::size_t p_ssid_offset);
+    AP* get_ap(Packet& p_packet, std::size_t p_ssid_offset, int p_depth = 0);
 
     Client* get_client(Packet& p_packet, std::size_t p_src_offset, bool p_associated);
 

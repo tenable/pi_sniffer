@@ -64,6 +64,7 @@ public:
     void write_kml_output(const std::string& p_time);
     void write_client_csv_output(const std::string& p_time);
     void write_probe_csv_output(const std::string& p_time);
+    void write_ap_clients_csv_output(const std::string& p_time);
 
 private:
 

@@ -16,7 +16,8 @@ Configuration::Configuration() :
     m_wigle(false),
     m_kml(false),
     m_client_csv(false),
-    m_probe_csv(false)
+    m_probe_csv(false),
+    m_ap_clients_csv(false)
 {
 }
 
@@ -148,6 +149,14 @@ void Configuration::parse_output(const pugi::xml_node& p_output)
             if (enabled.compare("true") == 0)
             {
                 m_probe_csv = true;
+            }
+        }
+        else if (type.compare("ap_clients_csv") == 0)
+        {
+            std::string enabled(p_output.attribute("enabled").as_string());
+            if (enabled.compare("true") == 0)
+            {
+                m_ap_clients_csv = true;
             }
         }
     }

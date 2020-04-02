@@ -61,6 +61,11 @@ public:
         return m_probe_csv;
     }
 
+    bool get_ap_clients_csv() const
+    {
+        return m_ap_clients_csv;
+    }
+
     bool has_wep_key(const std::string& p_bssid) const;
 
     bool has_wpa_key(const std::string& p_ssid) const;
@@ -103,6 +108,9 @@ private:
 
     //! indicates if we should write out the probes to a csv file
     bool m_probe_csv;
+
+    //! indicates if we should write out the ap client csv file
+    bool m_ap_clients_csv;
 };
 
 #endif

@@ -61,8 +61,7 @@ bool IEEE80211::handle_packet(Packet& p_packet)
     return true;
 }
 
-AP* IEEE80211::get_ap(Packet& p_packet,
-                                       std::size_t p_ssid_offset)
+AP* IEEE80211::get_ap(Packet& p_packet, std::size_t p_ssid_offset, int p_depth)
 {
     boost::uint64_t bssid_mac = (*reinterpret_cast<const boost::uint64_t*>(
         p_packet.m_data + p_ssid_offset));
@@ -70,6 +69,12 @@ AP* IEEE80211::get_ap(Packet& p_packet,
     bssid_mac = (bssid_mac >> 16);
     bssid_mac = (bssid_mac << 16);
     bssid_mac = be64toh(bssid_mac);
+
+    if (bssid_mac == 0 && p_depth == 1)
+    {
+        return get_ap(p_packet, p_ssid_offset - 6, 0);
+    }
+    
     return p_packet.find_ap(bssid_mac);
 }
 
@@ -135,7 +140,7 @@ void IEEE80211::do_beacon(Packet& p_packet)
         m_pcap_out.add_packet(p_packet);
     }
 
-    AP* found = get_ap(p_packet, 14);
+    AP* found = get_ap(p_packet, 14, 1);
 
     p_packet.m_stats.increment_beacons();
 
