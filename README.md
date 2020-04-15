@@ -32,7 +32,11 @@ Additionally, you can configure the device with any of the following add-ons (an
 
 
 ## Software
-Download the release image and flash it to an SD card. Stick the SD card into your RPI Zero WH and you should be good to go!
+Download the release image and flash it to an SD card. Stick the SD card into your RPI Zero WH and you should be good to go! By default, SSH should be enabled. Use the default pi:raspberry credentials. The device's hostname is pisniffer so something along the following lines should get you in:
+
+```sh
+ssh pi@pisniffer.local
+```
 
 ## Issues and Pull Requests
 Issues and pull requests are welcome. I only ask that you provide enough information to recreate the issue or information about why the pull request should be accepted.
