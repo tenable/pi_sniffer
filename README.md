@@ -38,5 +38,28 @@ Download the release image and flash it to an SD card. Stick the SD card into yo
 ssh pi@pisniffer.local
 ```
 
+## Controls
+Pi Sniffer isn't unique just due to it's size but it also offers controls. The user can start and stop sniffing. Change channels. Deauth clients. And more. Here are some images showing how to use the controls.
+
+### Start, Stop, and Shutdown
+To start sniffing hit the #6 button. To stop sniffing hit the #5 button. To shutdown the device hold #5 and #6.
+
+![start_stop](https://user-images.githubusercontent.com/787916/79753616-3580a880-82e4-11ea-934b-fc65fc3d9e78.png)
+
+### Channel Hoppping
+To change to a specific channel, rotate to the antenna screen and hit #6. This will cycle you through the available channels plus hopping.
+
+![channel_change](https://user-images.githubusercontent.com/787916/79753590-30235e00-82e4-11ea-98a2-65b8e8a419f8.png)
+
+### Deauth Attack
+To deauth a client, find them in the client view and hit #6.
+
+![deauth](https://user-images.githubusercontent.com/787916/79753602-3285b800-82e4-11ea-85b2-065e194b8387.png)
+
+### Lock display
+Sometimes it's beneficial to lock the screen and controls. To do so, rotate to the lock screen and hit #6. To unlock you need to hit #5 and push up on the joystick at the same time.
+
+![lock](https://user-images.githubusercontent.com/787916/79753610-33b6e500-82e4-11ea-846d-62177edc5385.png)
+
 ## Issues and Pull Requests
 Issues and pull requests are welcome. I only ask that you provide enough information to recreate the issue or information about why the pull request should be accepted.
