@@ -25,7 +25,7 @@ public:
 
     // Signal strength and GPS location information. We make no attempt to
     // triangulate the actual location of the AP. Instead, we just call the "best"
-    // GPS coordinates whereever the signal strength is strongest. I think that
+    // GPS coordinates wherever the signal strength is strongest. I think that
     // is a fine enough solution.
     void set_location_info(boost::int8_t p_signal, double p_lat, double p_long, double p_alt, bool p_gps_on);
     boost::int8_t get_last_signal() const;

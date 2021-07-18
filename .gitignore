@@ -38,3 +38,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+venv
+.idea/
+pkgs/mac/__pycache__/
+pi_sniffer/cmake-build-debug/

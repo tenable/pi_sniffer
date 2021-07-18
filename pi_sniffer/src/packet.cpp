@@ -93,7 +93,7 @@ void Packet::get_recent_ap(boost::uint32_t p_seconds, std::vector<AP*>& p_router
 
 void Packet::get_recent_client(boost::uint32_t p_seconds, std::vector<Client*>& p_clients)
 {
-    // this approach has the short coming that we need packets to be regurlarly flowing.
+    // this approach has the short coming that we need packets to be regularly flowing.
     // although hopefully that's the case.
     boost::uint32_t cutoff = m_time - p_seconds;
 

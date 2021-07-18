@@ -260,7 +260,8 @@ int main(int p_argCount, char* p_argArray[])
                 {
                     std::stringstream result;
                     result << ((int)client->get_last_signal()) << ","
-                           << client->get_associated_str() << std::endl << std::endl;
+                           << client->get_associated_str() << ","
+                           << std::endl << std::endl;
 
                     boost::system::error_code ignored_error;
                     ui_sock.send_to(boost::asio::buffer(result.str()), remote_endpoint, 0, ignored_error);
